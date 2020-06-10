@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import itemReducer from './item.reducer';
+import items from './item.reducer';
+import layout from './layout.reducer';
 
 const app = combineReducers({
-  itemReducer,
+  items,
+  layout,
 });
 
 export default app;
