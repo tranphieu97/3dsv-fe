@@ -20,3 +20,18 @@ interface MenuProps {
   onClose?: () => void;
   items: MenuItem[];
 }
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: any;
+  value: any;
+}
+
+interface VerticalTab {
+  title: string;
+  component: JSX.Element;
+}
+
+interface VerticalTabsProps {
+  tabs: VerticalTab[];
+}
