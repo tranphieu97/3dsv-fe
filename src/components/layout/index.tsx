@@ -2,30 +2,15 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
-import AppHeader from './header';
-import AppDrawer from './drawer';
+import AppHeader from './app-header';
+import AppDrawer from './app-drawer';
 import { Box } from '@material-ui/core';
-
-const drawerWidth = 240;
+import { drawerWidth } from '../../styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    hide: {
-      display: 'none',
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-    },
-    drawerPaper: {
-      width: drawerWidth,
     },
     drawerHeader: {
       display: 'flex',
@@ -42,19 +27,19 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      marginLeft: -drawerWidth,
+      marginLeft: 0,
     },
     contentShift: {
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),
-      marginLeft: 0,
+      marginLeft: drawerWidth,
     },
   })
 );
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props: any) {
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
@@ -63,7 +48,7 @@ export default function PersistentDrawerLeft() {
   };
 
   return (
-    <div className={classes.root}>
+    <Box>
       <CssBaseline />
       <AppDrawer
         toggleDrawer={toggleDrawer}
@@ -80,9 +65,9 @@ export default function PersistentDrawerLeft() {
           })}
         >
           <div className={classes.drawerHeader} />
-          <Box>Text</Box>
+          <Box>{props.children}</Box>
         </main>
       </Box>
-    </div>
+    </Box>
   );
 }
