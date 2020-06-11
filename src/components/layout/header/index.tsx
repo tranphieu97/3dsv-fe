@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar } from '@material-ui/core';
 import clsx from 'clsx';
@@ -30,54 +30,21 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function PrimarySearchAppBar(props: any) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [
-    mobileMoreAnchorEl,
-    setMobileMoreAnchorEl,
-  ] = React.useState<null | HTMLElement>(null);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const handleClickMenuIcon = () => {
-    props.toggleDrawer();
-  };
 
   return (
-    <Fragment>
-      <AppBar
-        position='fixed'
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: props.openDrawer,
-        })}
-      >
-        <Toolbar>
-          <HeaderLeftSide
-            handleClickMenuIcon={handleClickMenuIcon}
-          ></HeaderLeftSide>
-          <div className={classes.grow} />
-          <HeaderRightSide></HeaderRightSide>
-        </Toolbar>
-      </AppBar>
-      {/* {renderMobileMenu}
-      {renderMenu} */}
-    </Fragment>
+    <AppBar
+      position='fixed'
+      className={clsx(classes.appBar, {
+        [classes.appBarShift]: props.openDrawer,
+      })}
+    >
+      <Toolbar>
+        <HeaderLeftSide
+          handleClickMenuIcon={props.toggleDrawer}
+        ></HeaderLeftSide>
+        <div className={classes.grow} />
+        <HeaderRightSide></HeaderRightSide>
+      </Toolbar>
+    </AppBar>
   );
 }
