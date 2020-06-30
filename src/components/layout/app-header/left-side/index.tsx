@@ -21,8 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
 function HeaderLeftSide(props: any) {
   const classes = useStyles();
 
-  console.log(props);
-
   return (
     <Fragment>
       <IconButton

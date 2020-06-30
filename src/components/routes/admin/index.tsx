@@ -1,24 +1,17 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import VerticalTabs from '../../common/vertical-tabs';
-import ManageItems from '../../manage/items';
-import ManageUsers from '../../manage/users';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import ItemsRoute from './items';
 
-export default function Admin() {
-  const tabData: VerticalTab[] = [
-    {
-      title: 'Items',
-      component: <ManageItems />,
-    },
-    {
-      title: 'User',
-      component: <ManageUsers />,
-    },
-  ];
-
+export default function Admin(props: any) {
+  const { path, url } = useRouteMatch();
   return (
     <Box>
-      <VerticalTabs tabs={tabData}></VerticalTabs>
+      <Switch>
+        <Route exact path={`${path}/items`}>
+          <ItemsRoute />
+        </Route>
+      </Switch>
     </Box>
   );
 }
