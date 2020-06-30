@@ -6,7 +6,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchField from '../../../common/search-field';
 import MoreActions from './more-actions';
 import { useTranslation } from 'react-i18next';
-import { apiHost } from 'config';
+import { apiAuth } from 'config';
 
 export default function HeaderRightSide() {
   const { t } = useTranslation();
@@ -36,7 +36,7 @@ export default function HeaderRightSide() {
 
   const LoggedOutActions = (
     <div>
-      <Button variant='contained' href={`${apiHost}/auth/google`}>
+      <Button variant='contained' href={`${apiAuth}/google`}>
         {t('layout.header.login')}
       </Button>
     </div>
@@ -49,4 +49,8 @@ export default function HeaderRightSide() {
       <MoreActions></MoreActions>
     </Fragment>
   );
+}
+
+function mapStateToProps(state: any) {
+  return { auth: state.auth };
 }
