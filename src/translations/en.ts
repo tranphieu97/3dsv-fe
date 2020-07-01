@@ -5,6 +5,10 @@ const en = {
     layout: {
       header: {
         login: 'Login',
+        userActions: {
+          profile: 'Profile',
+          logout: 'Logout',
+        },
       },
     },
   },

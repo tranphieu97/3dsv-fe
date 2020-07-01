@@ -6,7 +6,7 @@ import Home from '../routes/home';
 import Admin from '../routes/admin';
 import PageNotFound from '../routes/page-not-found';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/me.action';
+import { fetchUser } from 'actions/me.action';
 
 const App = function (props: any) {
   useEffect(() => {

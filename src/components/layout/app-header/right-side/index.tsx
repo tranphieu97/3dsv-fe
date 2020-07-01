@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { IconButton, Badge, Button } from '@material-ui/core';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchField from '../../../common/search-field';
-import MoreActions from './more-actions';
+import UserActions from './user-actions';
 import { useTranslation } from 'react-i18next';
 import { apiAuth } from 'config';
+import { connect } from 'react-redux';
 
-export default function HeaderRightSide() {
+const HeaderRightSide = function (props: any) {
   const { t } = useTranslation();
 
   const LoggedInActions = (
@@ -23,14 +23,7 @@ export default function HeaderRightSide() {
           <NotificationsIcon />
         </Badge>
       </IconButton>
-      <IconButton
-        edge='end'
-        aria-label='account of current user'
-        aria-haspopup='true'
-        color='inherit'
-      >
-        <AccountCircle />
-      </IconButton>
+      <UserActions></UserActions>
     </div>
   );
 
@@ -42,15 +35,23 @@ export default function HeaderRightSide() {
     </div>
   );
 
+  function renderUserActions() {
+    if (props.auth._id) {
+      return LoggedInActions;
+    }
+    return LoggedOutActions;
+  }
+
   return (
     <Fragment>
       <SearchField onChange={(value) => console.log(value)}></SearchField>
-      {LoggedOutActions}
-      <MoreActions></MoreActions>
+      {renderUserActions()}
     </Fragment>
   );
-}
+};
 
 function mapStateToProps(state: any) {
   return { auth: state.auth };
 }
+
+export default connect(mapStateToProps, null)(HeaderRightSide);
