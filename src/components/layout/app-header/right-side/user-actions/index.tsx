@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Avatar } from '@material-ui/core';
 import AppMenu from '../../../../common/app-menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { useTranslation } from 'react-i18next';
@@ -35,6 +35,14 @@ const UserActions = function (props: any) {
     },
   ];
 
+  const userPhoto = () => {
+    const { auth } = props;
+    if (auth.photo) {
+      return <Avatar alt={auth.name} src={auth.photo} />;
+    }
+    return <AccountCircle />;
+  };
+
   return (
     <Fragment>
       <IconButton
@@ -43,7 +51,7 @@ const UserActions = function (props: any) {
         onClick={handleClickButton}
         color='inherit'
       >
-        <AccountCircle />
+        {userPhoto()}
       </IconButton>
       <AppMenu
         anchorEl={anchorEl}
@@ -55,4 +63,8 @@ const UserActions = function (props: any) {
   );
 };
 
-export default connect(null, { logoutUser })(UserActions);
+const mapStateToProps = (state: any) => {
+  return { auth: state.auth };
+};
+
+export default connect(mapStateToProps, { logoutUser })(UserActions);
