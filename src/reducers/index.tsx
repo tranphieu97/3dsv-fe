@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import items from './item.reducer';
+import items from './items.reducer';
 import layout from './layout.reducer';
 import auth from './auth.reducer';
 

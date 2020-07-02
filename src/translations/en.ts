@@ -11,6 +11,16 @@ const en = {
         },
       },
     },
+    manage: {
+      items: {
+        tableTitle: 'Items',
+        name: 'Name',
+        image: 'Image',
+        price: 'Price',
+        quantity: 'Quantity',
+        status: 'Status',
+      },
+    },
   },
 };
 
