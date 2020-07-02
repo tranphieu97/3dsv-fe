@@ -17,6 +17,7 @@
     "@types/react-router-dom": "^5.1.5",
     "axios": "^0.19.2",
     "i18next": "^19.4.5",
+    "material-table": "^1.63.1",
     "module-alias": "^2.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
