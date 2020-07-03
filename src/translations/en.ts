@@ -19,6 +19,11 @@ const en = {
         price: 'Price',
         quantity: 'Quantity',
         status: 'Status',
+        add: 'Add',
+        addingForm: {
+          title: 'New Item',
+          save: 'Save',
+        },
       },
     },
   },
